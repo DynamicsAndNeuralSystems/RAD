@@ -1,3 +1,4 @@
+![RAD.png](RAD.png)
 # RAD
 Code for the Rescaled Auto-Density (RAD) in your favourite language
 
