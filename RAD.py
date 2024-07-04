@@ -35,8 +35,8 @@ def RAD(x, centre=False, tau=1):
 
     # Median split
     subMedians = x < np.median(x)
-    superMedianSD = np.std(x[~subMedians])
-    subMedianSD = np.std(x[subMedians])
+    superMedianSD = np.std(x[~subMedians], ddof=1)
+    subMedianSD = np.std(x[subMedians], ddof=1)
 
     # Properties of the auto-density
     sigma_dx = np.std(y - x)
