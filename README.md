@@ -1,5 +1,5 @@
 # RAD
-![DOI badge](https://zenodo.org/badge/DOI/10.5281/zenodo.12660859.svg)
+[![DOI badge](https://zenodo.org/badge/DOI/10.5281/zenodo.12660859.svg)](https://doi.org/10.5281/zenodo.12660859)
 
 Code for the Rescaled Auto-Density (RAD) in your favourite language
 
