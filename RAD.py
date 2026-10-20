@@ -39,7 +39,7 @@ def RAD(x, centre=False, tau=1):
     subMedianSD = np.std(x[subMedians], ddof=1)
 
     # Properties of the auto-density
-    sigma_dx = np.std(y - x)
+    sigma_dx = np.std(y - x, ddof=1)
     densityDifference = (1/superMedianSD) - (1/subMedianSD)
 
     # return RAD
