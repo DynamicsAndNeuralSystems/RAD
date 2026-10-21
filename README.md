@@ -96,7 +96,7 @@ This happens for constant or very short series, and for integer-valued or heavil
 RAD is also available in other packages in the group's ecosystem:
 
 - [hctsa](https://github.com/benfulcher/hctsa) (MATLAB): the operation `CR_RAD`, used for the features `CR_RAD_1`, `CR_RAD_2` and `CR_RAD_tau`.
-- [pyhctsa](https://github.com/DynamicsAndNeuralSystems/pyhctsa) (Python): the corresponding port of the hctsa operation.
+- [pyhctsa](https://github.com/DynamicsAndNeuralSystems/pyhctsa) (Python): `pyhctsa.operations.criticality.rad`, the Python counterpart of `CR_RAD`, computed in the hctsa feature set at τ = 1, τ = 2 and an automatically chosen τ.
 - [TimeseriesFeatures.jl](https://github.com/brendanjohnharris/TimeseriesFeatures.jl) (Julia): the `RAD` feature.
 
 ## Citation
