@@ -33,19 +33,14 @@ git clone https://github.com/DynamicsAndNeuralSystems/RAD.git
 
 ## Usage
 
-RAD takes a time series `x` (a vector), a flag for whether to center the series at its median and take absolute values (the centered variant, relevant for signed data, as in the paper's Eq. 12), and a delay `tau` (an integer, in units of the timestep) used for the delay embedding and for the increments.
+RAD takes a time series `x` (a vector), a delay `tau` (a positive integer, in units of the timestep) used for the delay embedding and for the increments, and a flag `doCentre` for whether to center the series at its median and take absolute values.
+Use the centered variant (the default) unless the series represents radial values; it is the one for signed data, as in the paper's Eq. 12.
 The output is a single number.
 
-The three implementations differ in the name, default, and position of these arguments:
+All three implementations share the signature `RAD(x, tau = 1, doCentre = true)`.
+(Before this was unified, the MATLAB and Python versions took `RAD(x, center, tau)` and did not center by default; a call in the old order now either raises an error or, where the two orders happen to agree (such as `RAD(x, 1)`), gives the same result as before.)
 
-| Language | Signature | Centering by default? |
-|---|---|---|
-| MATLAB | `RAD(x, center = 0, tau = 1)` | no |
-| Python | `RAD(x, centre = False, tau = 1)` | no |
-| Julia | `RAD(z, τ = 1, doAbs = true)` | yes |
-
-To avoid ambiguity, pass the centering flag and `tau` explicitly, as in the examples below.
-They apply RAD to the same deterministic test series of 2000 samples and give the same values in all three languages (to the printed precision):
+The examples below apply RAD to the same deterministic test series of 2000 samples and give the same values in all three languages (to the printed precision):
 
 | `RAD` call | Value |
 |---|---|
@@ -59,9 +54,9 @@ They apply RAD to the same deterministic test series of 2000 samples and give th
 t = (1:2000)';
 x = sin(0.3*t) + 0.3*cos(1.7*t) + 0.1*sin(0.011*t.^2);
 
-RAD(x, false, 1)  % uncentered, tau = 1
-RAD(x, true, 1)   % centered, tau = 1
-RAD(x, true, 2)   % centered, tau = 2
+RAD(x, 1, false)  % uncentered, tau = 1
+RAD(x)            % centered, tau = 1 (the defaults)
+RAD(x, 2)         % centered, tau = 2
 ```
 
 **Python**
@@ -73,9 +68,9 @@ from RAD import RAD
 t = np.arange(1, 2001)
 x = np.sin(0.3*t) + 0.3*np.cos(1.7*t) + 0.1*np.sin(0.011*t**2)
 
-RAD(x, centre=False, tau=1)  # uncentered, tau = 1
-RAD(x, centre=True, tau=1)   # centered, tau = 1
-RAD(x, centre=True, tau=2)   # centered, tau = 2
+RAD(x, tau=1, doCentre=False)  # uncentered, tau = 1
+RAD(x)                         # centered, tau = 1 (the defaults)
+RAD(x, tau=2)                  # centered, tau = 2
 ```
 
 **Julia**
@@ -88,12 +83,13 @@ t = 1:2000
 x = @. sin(0.3*t) + 0.3*cos(1.7*t) + 0.1*sin(0.011*t^2)
 
 RAD(x, 1, false)  # uncentered, tau = 1
-RAD(x, 1, true)   # centered, tau = 1
-RAD(x, 2, true)   # centered, tau = 2
+RAD(x)            # centered, tau = 1 (the defaults)
+RAD(x, 2)         # centered, tau = 2
 ```
 
 RAD needs a series with enough distinct values for both halves of the median split to have a nonzero spread.
-It returns `NaN` for a constant series, and `NaN` or `-Inf` for integer-valued or heavily quantized series (for example, spike counts) where many values are tied at the median.
+When either half of the median split has fewer than two values or no spread, RAD returns `NaN` with a warning.
+This happens for constant or very short series, and for integer-valued or heavily quantized series (for example, spike counts) where many values are tied.
 
 ## Other implementations
 
