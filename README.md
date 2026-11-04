@@ -99,7 +99,7 @@ RAD is also available in other packages in the group's ecosystem:
 pyhctsa is where the hctsa feature library is actively developed.
 - [hctsa](https://github.com/benfulcher/hctsa) (MATLAB): the operation [`CR_RAD`](https://github.com/benfulcher/hctsa/blob/main/Operations/CR_RAD.m), used for the features `CR_RAD_1`, `CR_RAD_2` and `CR_RAD_tau`.
 hctsa is now frozen, with new work going into pyhctsa.
-- [TimeseriesFeatures.jl](https://github.com/brendanjohnharris/TimeseriesFeatures.jl) (Julia): the `RAD` feature.
+- [TimeseriesFeatures.jl](https://github.com/brendanjohnharris/TimeseriesFeatures.jl) (Julia): the `RAD` function and the `CR_RAD` (centered) and `CR_RAD_raw` features.
 
 ## Citation
 
