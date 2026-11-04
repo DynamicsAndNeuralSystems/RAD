@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use RAD, please cite the paper below."
+title: "RAD: the rescaled auto-density"
+authors:
+- family-names: "Harris"
+  given-names: "Brendan"
+  orcid: "https://orcid.org/0000-0003-3412-4186"
+license: MIT
+repository-code: "https://github.com/DynamicsAndNeuralSystems/RAD"
+preferred-citation:
+  type: article
+  title: "Tracking the Distance to Criticality in Systems with Unknown Noise"
+  authors:
+  - family-names: "Harris"
+    given-names: "Brendan"
+    orcid: "https://orcid.org/0000-0003-3412-4186"
+  - family-names: "Gollo"
+    given-names: "Leonardo L."
+    orcid: "https://orcid.org/0000-0003-3505-9259"
+  - family-names: "Fulcher"
+    given-names: "Ben D."
+    orcid: "https://orcid.org/0000-0002-3003-4055"
+  journal: "Physical Review X"
+  volume: 14
+  issue: 3
+  start: "031021"
+  year: 2024
+  month: 8
+  doi: "10.1103/PhysRevX.14.031021"
